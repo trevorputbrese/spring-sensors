@@ -50,7 +50,7 @@ public class DemoController {
     @RequestMapping("/refresh")
     public @ResponseBody SensorData refresh() {
         SensorData result = new SensorData( _sensorRepository.findAll(), _webProperties.getTempHeader(),
-                _webProperties.getPressureHeader(), _webProperties.getBannerTextColor(), REPLACEMENT_BANNER_TEXT);
+                _webProperties.getPressureHeader(), _webProperties.getBannerTextColor(), _webProperties.getBannerText());
         return result;
     }
 }
