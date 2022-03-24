@@ -45,7 +45,7 @@ public class DemoController {
         return new HashMap<>();
     }
 
-    private static final String REPLACEMENT_BANNER_TEXT="Tanzu Application Platform Demo";
+    private static final String REPLACEMENT_BANNER_TEXT="Pepsi Demo";
 
     @RequestMapping("/refresh")
     public @ResponseBody SensorData refresh() {
