@@ -5,27 +5,40 @@ accelerator:
   tags:
     - java
     - spring
+    - tanzu
 
   options:
-    - name: bannerText
-      label: Banner Text
-      display: true
-      description: Title text for the application banner header
+    - name: repositoryPrefix
       inputType: text
-      dataType: string
-      defaultValue: "Tanzu Sensor Database"
+      label: Prefix for the container image repository
+      defaultValue: dev.local
+      required: true
 
-    - name: bannerColor
-      label: Banner Color
-      display: true
-      description: Text color for the application banner header
-      inputType: radio
-      dataType: string
-      choices:
-        - text: Salmon
-          value: Salmon
-        - text: Azure
-          value: Azure
-        - text: Magenta
-          value: Magenta
-      defaultValue: Salmon
+engine:
+  merge:
+    - include: [ "**/*" ]
+      exclude: [ "config/*.yaml", "Tiltfile", "README.md", "catalog/*.yaml" ]
+    - include: [ "config/*.yaml", "Tiltfile" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: tanzu-java-web-app
+              with: "#artifactId"
+        - type: ReplaceText
+          substitutions:
+            - text: your-registry.io/project
+              with: "#repositoryPrefix"
+    - include: [ "README.md" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: tanzu-java-web-app
+              with: "#artifactId"
+    - include: [ "catalog/*.yaml" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: tanzu-java-web-app
+              with: "#artifactId"
+        - type: RewritePath
+          rewriteTo: "#filename"
