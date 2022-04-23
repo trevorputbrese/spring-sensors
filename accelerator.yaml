@@ -1,7 +1,7 @@
 accelerator:
   displayName: Spring Sensors
   description: A Spring application for tracking sensor data
-  iconUrl: https://dashboard.snapcraft.io/site_media/appmedia/2018/11/indicator-sensors_r8EdpLP.png
+  iconUrl: https://github.com/sample-accelerators/icons/raw/master/sensor-dashboard.png
   tags:
     - java
     - spring
