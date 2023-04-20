@@ -5,6 +5,7 @@ metadata:
   labels:
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/part-of: spring-sensors
+    apps.tanzu.vmware.com/has-tests: "true"
 spec:
   build:
     env:
@@ -14,6 +15,12 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+#  serviceClaims:
+#    - name: db
+#      ref:
+#        apiVersion: with.sql.tanzu.vmware.com/v1
+#        kind: MySQL
+#        name: mysql-spring-sensors
   resources:
     requests:
       cpu: 500m
@@ -23,6 +30,6 @@ spec:
   source:
     git:
       # update when code is pushed to a new location
-      url: $GITREPO
+      url: https://github.com/trevorputbrese/spring-sensors
       ref:
         branch: main
