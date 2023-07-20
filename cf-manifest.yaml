@@ -1,0 +1,4 @@
+---
+applications:
+- name: spring-sensors
+  random-route: true

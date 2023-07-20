@@ -21,12 +21,12 @@ spec:
 #        apiVersion: with.sql.tanzu.vmware.com/v1
 #        kind: MySQL
 #        name: mysql-spring-sensors
-  resources:
-    requests:
-      cpu: 500m
-      memory: 512Mi
-    limits:
-      memory: 512Mi
+#  resources:
+#    requests:
+#      cpu: 500m
+#      memory: 512Mi
+#    limits:
+#      memory: 512Mi
   source:
     git:
       # update when code is pushed to a new location
