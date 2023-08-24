@@ -1,4 +1,5 @@
 allow_k8s_contexts('eduk8s')
+allow_k8s_contexts('aks-eus-tap-v1-6-cluster-3')
 
 SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='your-registry.io/project/spring-sensors-source')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
