@@ -18,9 +18,9 @@ spec:
     - name: testing_pipeline_matching_labels
       value:
         apps.tanzu.vmware.com/pipeline: test
-        apps.tanzu.vmware.com/language: ruby    
+        apps.tanzu.vmware.com/language: java    
   serviceClaims:
-   - name: db
+   - name: mysql-spring
      ref:
        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
        kind: ClassClaim 
