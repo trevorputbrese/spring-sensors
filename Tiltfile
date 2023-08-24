@@ -21,5 +21,5 @@ k8s_custom_deploy(
     ]
 )
 
-k8s_resource('spring-sensors', port_forwards=["8080:8080"],
+k8s_resource('spring-sensors-iterate', port_forwards=["8080:8080"],
             extra_pod_selectors=[{'serving.knative.dev/service': 'spring-sensors-iterate'}])
