@@ -6,14 +6,14 @@ LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
 k8s_custom_deploy(
-    'spring-sensors',
+    'spring-sensors-iterate',
     apply_cmd="tanzu apps workload apply -f config/workload-iterate.yaml --live-update" +
                " --local-path " + LOCAL_PATH +
                " --source-image " + SOURCE_IMAGE +
                " --namespace " + NAMESPACE +
                " --yes >/dev/null" +
-               " && kubectl get workload spring-sensors --namespace " + NAMESPACE + " -o yaml",
-    delete_cmd="tanzu apps workload delete -f config/workload.yaml --namespace " + NAMESPACE + " --yes",
+               " && kubectl get workload spring-sensors-iterate --namespace " + NAMESPACE + " -o yaml",
+    delete_cmd="tanzu apps workload delete -f config/workload-iterate.yaml --namespace " + NAMESPACE + " --yes",
     deps=['pom.xml', './target/classes'],
     container_selector='workload',
     live_update=[
@@ -22,4 +22,4 @@ k8s_custom_deploy(
 )
 
 k8s_resource('spring-sensors', port_forwards=["8080:8080"],
-            extra_pod_selectors=[{'serving.knative.dev/service': 'spring-sensors'}])
+            extra_pod_selectors=[{'serving.knative.dev/service': 'spring-sensors-iterate'}])
