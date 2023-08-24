@@ -25,12 +25,6 @@ spec:
        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
        kind: ClassClaim 
        name: mysql-spring
-  resources:
-    requests:
-      cpu: 500m
-      memory: 512Mi
-    limits:
-      memory: 512Mi
   source:
     git:
       # update when code is pushed to a new location
